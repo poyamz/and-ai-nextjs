@@ -32,8 +32,8 @@ demonstrates the patterns; real projects replace it.
   `middleware.ts` renamed to `proxy.ts`, `cookies()` and `searchParams`
   are now async). See the warning at the top of this file.
 - **React 19** (function components with hooks, no class components)
-- **Supabase** for Postgres database, auth (email/password + magic links +
-  Google OAuth + GitHub OAuth), Row Level Security
+- **Supabase** for Postgres database, auth (email/password only), Row Level
+  Security
 - **Tailwind CSS** (if applicable — confirm by checking `postcss.config.mjs` or `tailwind.config.ts`)
 - **Vercel** for hosting, with GitHub Actions for CI/CD
 - **`@supabase/ssr`** for cookie-based session management — NOT the older
@@ -51,7 +51,7 @@ demonstrates the patterns; real projects replace it.
 │   │   ├── login/page.tsx
 │   │   ├── signup/page.tsx
 │   │   ├── check-email/page.tsx
-│   │   ├── callback/route.ts    # OAuth + magic link return URL
+│   │   ├── callback/route.ts    # Email confirmation return URL
 │   │   └── actions.ts            # Server actions for all auth flows
 │   └── dashboard/
 │       ├── page.tsx              # Example protected page

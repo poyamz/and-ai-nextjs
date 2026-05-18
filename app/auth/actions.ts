@@ -81,75 +81,7 @@ export async function signupWithPassword(formData: FormData) {
 }
 
 // -----------------------------------------------------------------------------
-// Magic link (passwordless email)
-// -----------------------------------------------------------------------------
-
-export async function loginWithMagicLink(formData: FormData) {
-  const email = String(formData.get('email') ?? '');
-  const next = sanitizeNext(String(formData.get('next') ?? ''));
-
-  if (!email) {
-    redirect('/auth/login?error=' + encodeURIComponent('Email is required'));
-  }
-
-  const supabase = await createClient();
-  const origin = await getOrigin();
-
-  const callbackUrl = new URL('/auth/callback', origin);
-  callbackUrl.searchParams.set('next', next);
-
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: callbackUrl.toString(),
-      // shouldCreateUser: false  // uncomment to disallow signups via magic link
-    },
-  });
-
-  if (error) {
-    redirect('/auth/login?error=' + encodeURIComponent(error.message));
-  }
-
-  redirect('/auth/check-email');
-}
-
-// -----------------------------------------------------------------------------
-// OAuth (Google, GitHub)
-// -----------------------------------------------------------------------------
-
-export async function loginWithOAuth(formData: FormData) {
-  const provider = String(formData.get('provider') ?? '') as 'google' | 'github';
-  const next = sanitizeNext(String(formData.get('next') ?? ''));
-
-  if (provider !== 'google' && provider !== 'github') {
-    redirect('/auth/login?error=' + encodeURIComponent('Unknown OAuth provider'));
-  }
-
-  const supabase = await createClient();
-  const origin = await getOrigin();
-
-  const callbackUrl = new URL('/auth/callback', origin);
-  callbackUrl.searchParams.set('next', next);
-
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider,
-    options: {
-      redirectTo: callbackUrl.toString(),
-    },
-  });
-
-  if (error) {
-    redirect('/auth/login?error=' + encodeURIComponent(error.message));
-  }
-
-  // Supabase returns the URL to redirect to (the provider's authorize endpoint).
-  // We redirect the browser there; the user authenticates with the provider,
-  // and the provider redirects them back to /auth/callback with a code.
-  if (data?.url) redirect(data.url);
-}
-
-// -----------------------------------------------------------------------------
-// Logout (we'll use this in step 9, defining here for completeness)
+// Logout
 // -----------------------------------------------------------------------------
 
 export async function logout() {
