@@ -25,9 +25,7 @@
   "files.exclude": {
     "**/.next": true,
     "**/node_modules": true,
-    "**/.vercel": true,
-    "**/.score": true,
-    "**/.prompts": true
+    "**/.vercel": true
   },
 
   // Allow downloading schemas from the Vercel OpenAPI spec registry, which
