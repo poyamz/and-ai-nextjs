@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Scoring infrastructure — managed by the protocol in AGENTS.md
+# Do not remove these entries; do not commit these files
+.prompts
+.score
