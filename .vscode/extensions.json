@@ -7,15 +7,15 @@
     "google.gemini-cli-vscode-ide-companion",
     "anthropic.claude-code",
     "Google.geminicodeassist",
-    "GitHub.copilot",
+    // "GitHub.copilot",
 
     // Development essentials
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "tamasfe.even-better-toml",
+    "tamasfe.even-better-toml"
 
     // Remote Containers extension — required to use the devcontainer setup in this repo
-    "ms-vscode-remote.remote-containers"
+    // "ms-vscode-remote.remote-containers"
   ]
 }

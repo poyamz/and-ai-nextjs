@@ -14,7 +14,9 @@
     "vercel:login": "vercel login",
     "vercel:link": "vercel link",
     "vercel:deploy": "vercel deploy",
-    "vercel:deploy:prod": "vercel deploy --prod"
+    "vercel:deploy:prod": "vercel deploy --prod",
+    "gemini": "npx gemini",
+    "claude": "npx claude"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
@@ -24,6 +26,8 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
+    "@anthropic-ai/claude-code": "^2.1.144",
+    "@google/gemini-cli": "^0.42.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^24",
     "@types/react": "^19",
